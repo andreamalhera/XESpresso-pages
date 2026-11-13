@@ -1,0 +1,110 @@
+{
+  "site": {
+    "title": "XESpresso",
+    "subtitle": "Event Log Feature Explorer"
+  },
+
+  "navigation": [
+    { "label": "Event Data Catalog", "path": "/" },
+    { "label": "Event Data Space", "path": "/feature-space" },
+    { "label": "Feature Correlations", "path": "/feature-selection" },
+    { "label": "About", "path": "/about" }
+  ],
+
+  "visualization": {
+    "labels": {
+      "domainsTitle": "Domain Applications",
+      "domainsHint": "Choose a concept, then click a tile to filter event logs. Tile widths follow the number of event logs.",
+      "landscapeTitle": "Event Log Landscape",
+      "landscapeDescription": "Event logs by academic context year, grouped and colored by the concept chosen above. Hover for details, click to open.",
+      "entrySingular": "event log",
+      "entryPlural": "event logs"
+    }
+  },
+
+  "domainApplications": [
+    { "id": "Process Mining Benchmark", "label": "Process Mining Benchmark", "color": "#bf616a" },
+    { "id": "Administrative Process", "label": "Administrative Process", "color": "#88c0d0" },
+    { "id": "Public Administration", "label": "Public Administration", "color": "#ebcb8b" },
+    { "id": "Administrative Process for Healthcare", "label": "Administrative Process for Healthcare", "color": "#a3be8c" },
+    { "id": "IT Service Management", "label": "IT Service Management", "color": "#c3788f" },
+    { "id": "Healthcare", "label": "Healthcare", "color": "#b67a19" },
+    { "id": "Banking", "label": "Banking", "color": "#5bb3ad" },
+    { "id": "Financial", "label": "Financial", "color": "#cf624e" },
+    { "id": "Sales", "label": "Sales", "color": "#8c57b3" },
+    { "id": "Operational Process", "label": "Operational Process", "color": "#4aa47d" },
+    { "id": "Law", "label": "Law", "color": "#d08770" },
+    { "id": "Software", "label": "Software", "color": "#b48ead" },
+    { "id": "Manufacturing", "label": "Manufacturing", "color": "#6f8fd6" }
+  ],
+
+  "features": {
+    "search": true,
+    "filters": true,
+    "landscape": true,
+    "stats": true
+  },
+
+  "featureSet": "default",
+
+  "contribute": {
+    "email": "andrea.maldonado+xespresso@tum.de",
+    "requiredFields": ["name", "source", "description", "domainApplication", "eventLogType", "resourceType", "year"],
+    "fileSizeMB": { "warn": 100, "max": 300 },
+    "submitUrl": "",
+    "githubRepo": "andreamalhera/XESpresso-pages",
+    "confirmationHours": 48
+  },
+
+  "about": {
+    "title": "About XESpresso",
+    "introduction": "XESpresso is an interactive explorer for process-mining event logs: the Costa et al. collection, coded across Basic Process Analytics, Domain Context, Academic Context, Data Characteristics, Resource Context, and Path Observation, plus further BPI Challenge logs and IoT lab logs. This version identifies a sample of 20 event logs, chosen as the most diverse in feature space. All other logs are hidden: they count toward the statistics, plots and correlations and appear as faint points, but are not listed. Their FEEED feature values are published without names or sources, so that the feature space and the correlations are recomputed with the event logs you add. FEEED-computed process-mining features power the Event Data Space and Feature Correlations tabs.",
+    "sections": [
+      {
+        "title": "Event Data Catalog",
+        "content": "Browse, search, and filter all event logs. Each Costa et al. log's metadata is grouped exactly as in the source spreadsheet: Basic Process Analytics, Domain Context, Academic Context, Data Characteristics, Resource Context, and Path Observation. Logs outside that collection show their source, counts and domain context. The landscape plot arranges logs by Academic Context Year (the publication year of the referencing paper or, without one, of the dataset) and colors them by Domain Application."
+      },
+      {
+        "title": "Event Data Space",
+        "content": "A 2D PCA projection of the FEEED feature space over the features computed for every collection: each log's feature vector is mean-imputed, min-max scaled per feature, L2-row-normalized (sklearn Normalizer), then reduced with PCA(n_components=2). Points are colored by Domain Application, with a convex hull per event log type (Real-life, Synthetic, IoT Lab Logs)."
+      },
+      {
+        "title": "Feature Correlations",
+        "content": "A grouped correlation heatmap and an interactive least-correlated-feature selector, FEEED features are correlated pairwise (each pair over the logs that have both values) and grouped into eight semantic families (simple stats, trace length, trace variants, activities, start/end activities, eventropies, EPA-based). A greedy algorithm selects the N features with the least mutual correlation."
+      },
+      {
+        "title": "Data Source",
+        "content": "All event logs are kept in one table, one row per log: identity and source (DOI or dataset page), descriptive metadata (for the Costa et al. collection as coded by its authors), and FEEED (Feature Extraction from Event Data) process-mining features. The public version is built from that table, which is maintained privately: a sample of logs is shown with full details, and every other log is hidden."
+      },
+      {
+        "title": "Adding and Sending Event Logs",
+        "invite": true,
+        "content": "You can add event logs as XES or CSV files. For a CSV file you choose the columns that hold the case ID, the activity and the timestamp, and optionally the resource. The files are read and their features are computed in your browser. The files themselves are never uploaded. Added logs stay in your browser. Before you send them, a preview shows what each entry contains. To propose them for the collection, download your entries and email the file to the contact address. After the download, the page opens an email draft to that address on request. The file contains only the computed values, your descriptions and, if you fill them in, your name and institution. The maintainers review every entry before adding it to the collection, where accepted entries are published under CC BY 4.0. Open a GitHub issue proposes the entries as a public issue on GitHub under your GitHub account, with the submission in the issue text."
+      }
+    ],
+    "references": [
+      {
+        "text": "Costa, A., Eroglu, S. Y., Andree, K., & Pufahl, L. (2025). A Collection of Publicly Available Event Logs Enhanced by Metadata. In BPM 2025 Best Dissertation Award, Doctoral Consortium, and Demonstration & Resources Forum, CEUR Workshop Proceedings, vol. 4032, pp. 288–295.",
+        "url": "https://ceur-ws.org/Vol-4032/paper-38.pdf"
+      },
+      {
+        "text": "Maldonado, A., Tavares, G. M., Oyamada, R. S., Ceravolo, P., & Seidl, T. (2023). FEEED: Feature Extraction from Event Data. In ICPM 2023 Doctoral Consortium and Demo Track, CEUR Workshop Proceedings, vol. 3648.",
+        "url": "https://ceur-ws.org/Vol-3648/paper_6598.pdf"
+      },
+      {
+        "text": "Ehrendorfer, M., Bertrand, Y., Malburg, L., Mangler, J., Grüger, J., Rinderle-Ma, S., Bergmann, R., & Serral Asensio, E. (2023). Internet of Processes and Things: A Repository for IoT-Enriched Event Logs in Smart Environments. In BPM 2023 Best Dissertation Award, Doctoral Consortium, and Demonstration & Resources Forum, CEUR Workshop Proceedings, vol. 3469.",
+        "url": "https://ceur-ws.org/Vol-3469/paper-16.pdf"
+      },
+      {
+        "text": "IEEE Task Force on Process Mining. Process Mining Event Logs (BPI Challenge logs, published on 4TU.ResearchData).",
+        "url": "https://www.tf-pm.org/resources/logs"
+      }
+    ],
+    "license": {
+      "name": "CC BY 4.0",
+      "fullName": "Creative Commons Attribution 4.0 International",
+      "url": "https://creativecommons.org/licenses/by/4.0/",
+      "text": "This dataset and site content are licensed under a Creative Commons Attribution 4.0 International License. You are free to share and adapt the material for any purpose, even commercially, as long as you give appropriate credit, provide a link to the license, and indicate if changes were made."
+    }
+  }
+}

@@ -1,0 +1,1074 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "XESpresso — Event Log Dataset Record",
+  "description": "Schema for a single event log dataset entry, built from one row of the event log table: descriptive metadata (for the Costa et al. collection as coded by its authors) plus FEEED-computed process-mining features, where computed. Hidden entries keep only the fields needed for aggregate views and their FEEED features, so that the feature space and the correlations can be recomputed in the browser, and have every identifying field set to null.",
+  "type": "object",
+  "required": [
+    "_id",
+    "event_log_id",
+    "basic_info",
+    "domain_context",
+    "academic_context",
+    "data_characteristics",
+    "resource_context",
+    "path_observation",
+    "feeed_available"
+  ],
+  "properties": {
+    "_id": {
+      "type": "string",
+      "description": "Stable slug identifier for this record"
+    },
+    "hidden": {
+      "type": "boolean",
+      "description": "True for entries outside the public sample: counted in aggregates and plots, not listed"
+    },
+    "event_log_id": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "Stable numeric ID (Costa et al.'s Event Log ID for their logs); null when hidden"
+    },
+    "basic_info": {
+      "type": "object",
+      "title": "Basic Process Analytics",
+      "properties": {
+        "event_log_name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "event_log_dataset_file_name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "event_log_year": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "Year the event log dataset was created/released"
+        },
+        "dataset_size": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "dataset_format": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "number_of_cases": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "number_of_variants": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "number_of_unique_variants": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "number_of_events": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "number_of_activities": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "number_of_additional_attributes": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "additional_attributes": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "resource_availability": {
+          "type": "boolean"
+        },
+        "median_case_duration": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "mean_case_duration": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "start_date": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "end_date": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "domain_context": {
+      "type": "object",
+      "title": "Domain Context",
+      "properties": {
+        "domain_application": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "Administrative Process",
+            "Administrative Process for Healthcare",
+            "Banking",
+            "Financial",
+            "Healthcare",
+            "IT Service Management",
+            "Law",
+            "Manufacturing",
+            "Operational Process",
+            "Process Mining Benchmark",
+            "Public Administration",
+            "Sales",
+            "Software",
+            null
+          ],
+          "description": "Primary color-by / grouping field across the app"
+        },
+        "event_log_type": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "IoT Lab Logs",
+            "Real-life",
+            "Synthetic",
+            null
+          ]
+        },
+        "process_type": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "Main Process",
+            "Sub Process",
+            null
+          ]
+        },
+        "process_information": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "academic_context": {
+      "type": "object",
+      "title": "Academic Context",
+      "properties": {
+        "doi": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "year": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "Academic Context Year: publication year of the referencing paper, or of the dataset for logs without one (drives the app's time axis)"
+        },
+        "publication_type": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "Conference Paper",
+            "Journal Article",
+            "Workshop",
+            null
+          ]
+        },
+        "reference": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "data_characteristics": {
+      "type": "object",
+      "title": "Data Characteristics",
+      "properties": {
+        "activity_label": {
+          "type": "boolean"
+        },
+        "activity_label_description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "variant_proportion_ratio": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "case_coverage_top5": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "pct_case_coverage_top5": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "mean_duration_top5": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "potential_performance_issues": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "performance_issues_notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "prominent_exhibited_behavior": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "primary_dependency": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "pct_primary_dependency_case_coverage": {
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      }
+    },
+    "resource_context": {
+      "type": "object",
+      "title": "Resource Context",
+      "properties": {
+        "number_of_resources": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "number_of_unique_resources": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "resource_type": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "type_indication": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "path_observation": {
+      "type": "object",
+      "title": "Path Observation",
+      "properties": {
+        "consistency": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "Consistent",
+            "Inconsistent",
+            null
+          ]
+        },
+        "observed_path": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "notes_for_path_reduction": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "collection": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Collection the log belongs to (costa, iopt, bpic_icpm25, ...)"
+    },
+    "source_url": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Where the log can be downloaded (DOI link preferred)"
+    },
+    "feeed_available": {
+      "type": "boolean",
+      "description": "Whether feeed_features was computed for this log"
+    },
+    "feeed_log_key": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "`log` key in the event log table; null when hidden"
+    },
+    "feeed_features": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "description": "FEEED process-mining features, grouped by src/lib/featureGroups.js's FEATURE_GROUPS",
+      "properties": {
+        "n_traces": {
+          "type": "number"
+        },
+        "n_variants": {
+          "type": "number"
+        },
+        "ratio_variants_per_number_of_traces": {
+          "type": "number"
+        },
+        "trace_len_coefficient_variation": {
+          "type": "number"
+        },
+        "trace_len_entropy": {
+          "type": "number"
+        },
+        "trace_len_geometric_mean": {
+          "type": "number"
+        },
+        "trace_len_geometric_std": {
+          "type": "number"
+        },
+        "trace_len_harmonic_mean": {
+          "type": "number"
+        },
+        "trace_len_hist1": {
+          "type": "number"
+        },
+        "trace_len_hist10": {
+          "type": "number"
+        },
+        "trace_len_hist2": {
+          "type": "number"
+        },
+        "trace_len_hist3": {
+          "type": "number"
+        },
+        "trace_len_hist4": {
+          "type": "number"
+        },
+        "trace_len_hist5": {
+          "type": "number"
+        },
+        "trace_len_hist6": {
+          "type": "number"
+        },
+        "trace_len_hist7": {
+          "type": "number"
+        },
+        "trace_len_hist8": {
+          "type": "number"
+        },
+        "trace_len_hist9": {
+          "type": "number"
+        },
+        "trace_len_iqr": {
+          "type": "number"
+        },
+        "trace_len_kurtosis": {
+          "type": "number"
+        },
+        "trace_len_kurtosis_hist": {
+          "type": "number"
+        },
+        "trace_len_max": {
+          "type": "number"
+        },
+        "trace_len_mean": {
+          "type": "number"
+        },
+        "trace_len_median": {
+          "type": "number"
+        },
+        "trace_len_min": {
+          "type": "number"
+        },
+        "trace_len_mode": {
+          "type": "number"
+        },
+        "trace_len_q1": {
+          "type": "number"
+        },
+        "trace_len_q3": {
+          "type": "number"
+        },
+        "trace_len_skewness": {
+          "type": "number"
+        },
+        "trace_len_skewness_hist": {
+          "type": "number"
+        },
+        "trace_len_std": {
+          "type": "number"
+        },
+        "trace_len_variance": {
+          "type": "number"
+        },
+        "kurtosis_variant_occurrence": {
+          "type": "number"
+        },
+        "mean_variant_occurrence": {
+          "type": "number"
+        },
+        "ratio_most_common_variant": {
+          "type": "number"
+        },
+        "ratio_top_10_variants": {
+          "type": "number"
+        },
+        "ratio_top_1_variants": {
+          "type": "number"
+        },
+        "ratio_top_20_variants": {
+          "type": "number"
+        },
+        "ratio_top_50_variants": {
+          "type": "number"
+        },
+        "ratio_top_5_variants": {
+          "type": "number"
+        },
+        "ratio_top_75_variants": {
+          "type": "number"
+        },
+        "skewness_variant_occurrence": {
+          "type": "number"
+        },
+        "std_variant_occurrence": {
+          "type": "number"
+        },
+        "activities_iqr": {
+          "type": "number"
+        },
+        "activities_kurtosis": {
+          "type": "number"
+        },
+        "activities_max": {
+          "type": "number"
+        },
+        "activities_mean": {
+          "type": "number"
+        },
+        "activities_median": {
+          "type": "number"
+        },
+        "activities_min": {
+          "type": "number"
+        },
+        "activities_q1": {
+          "type": "number"
+        },
+        "activities_q3": {
+          "type": "number"
+        },
+        "activities_skewness": {
+          "type": "number"
+        },
+        "activities_std": {
+          "type": "number"
+        },
+        "activities_variance": {
+          "type": "number"
+        },
+        "n_unique_activities": {
+          "type": "number"
+        },
+        "n_unique_start_activities": {
+          "type": "number"
+        },
+        "start_activities_iqr": {
+          "type": "number"
+        },
+        "start_activities_kurtosis": {
+          "type": "number"
+        },
+        "start_activities_max": {
+          "type": "number"
+        },
+        "start_activities_mean": {
+          "type": "number"
+        },
+        "start_activities_median": {
+          "type": "number"
+        },
+        "start_activities_min": {
+          "type": "number"
+        },
+        "start_activities_q1": {
+          "type": "number"
+        },
+        "start_activities_q3": {
+          "type": "number"
+        },
+        "start_activities_skewness": {
+          "type": "number"
+        },
+        "start_activities_std": {
+          "type": "number"
+        },
+        "start_activities_variance": {
+          "type": "number"
+        },
+        "end_activities_iqr": {
+          "type": "number"
+        },
+        "end_activities_kurtosis": {
+          "type": "number"
+        },
+        "end_activities_max": {
+          "type": "number"
+        },
+        "end_activities_mean": {
+          "type": "number"
+        },
+        "end_activities_median": {
+          "type": "number"
+        },
+        "end_activities_min": {
+          "type": "number"
+        },
+        "end_activities_q1": {
+          "type": "number"
+        },
+        "end_activities_q3": {
+          "type": "number"
+        },
+        "end_activities_skewness": {
+          "type": "number"
+        },
+        "end_activities_std": {
+          "type": "number"
+        },
+        "end_activities_variance": {
+          "type": "number"
+        },
+        "n_unique_end_activities": {
+          "type": "number"
+        },
+        "eventropy_global_block": {
+          "type": "number"
+        },
+        "eventropy_global_block_flattened": {
+          "type": "number"
+        },
+        "eventropy_k_block_diff_1": {
+          "type": "number"
+        },
+        "eventropy_k_block_diff_3": {
+          "type": "number"
+        },
+        "eventropy_k_block_diff_5": {
+          "type": "number"
+        },
+        "eventropy_k_block_ratio_1": {
+          "type": "number"
+        },
+        "eventropy_k_block_ratio_3": {
+          "type": "number"
+        },
+        "eventropy_k_block_ratio_5": {
+          "type": "number"
+        },
+        "eventropy_knn_3": {
+          "type": "number"
+        },
+        "eventropy_knn_5": {
+          "type": "number"
+        },
+        "eventropy_knn_7": {
+          "type": "number"
+        },
+        "eventropy_lempel_ziv": {
+          "type": "number"
+        },
+        "eventropy_lempel_ziv_flattened": {
+          "type": "number"
+        },
+        "eventropy_prefix": {
+          "type": "number"
+        },
+        "eventropy_prefix_flattened": {
+          "type": "number"
+        },
+        "eventropy_trace": {
+          "type": "number"
+        },
+        "epa_variant_entropy": {
+          "type": "number"
+        },
+        "epa_normalized_variant_entropy": {
+          "type": "number"
+        },
+        "epa_sequence_entropy": {
+          "type": "number"
+        },
+        "epa_normalized_sequence_entropy": {
+          "type": "number"
+        },
+        "epa_sequence_entropy_linear_forgetting": {
+          "type": "number"
+        },
+        "epa_normalized_sequence_entropy_linear_forgetting": {
+          "type": "number"
+        },
+        "epa_sequence_entropy_exponential_forgetting": {
+          "type": "number"
+        },
+        "epa_normalized_sequence_entropy_exponential_forgetting": {
+          "type": "number"
+        },
+        "n_events": {
+          "type": "number"
+        },
+        "coverage_variants": {
+          "type": "number"
+        },
+        "heterogeneity_rate_variants": {
+          "type": "number"
+        },
+        "rel_coverage_variants": {
+          "type": "number"
+        },
+        "simple_trace_diversity": {
+          "type": "number"
+        },
+        "distinct_activities_max": {
+          "type": "number"
+        },
+        "distinct_activities_mean": {
+          "type": "number"
+        },
+        "distinct_activities_min": {
+          "type": "number"
+        },
+        "distinct_activities_non_overlap": {
+          "type": "number"
+        },
+        "distinct_activities_std": {
+          "type": "number"
+        },
+        "event_density": {
+          "type": "number"
+        },
+        "rel_unique_start_activities": {
+          "type": "number"
+        },
+        "rel_unique_end_activities": {
+          "type": "number"
+        },
+        "avg_loop_size_per_trace": {
+          "type": "number"
+        },
+        "avg_loops_per_trace": {
+          "type": "number"
+        },
+        "avg_traces_with_loop": {
+          "type": "number"
+        },
+        "avg_traces_with_repetition": {
+          "type": "number"
+        },
+        "max_loop_size_per_trace": {
+          "type": "number"
+        },
+        "max_loops_per_trace": {
+          "type": "number"
+        },
+        "n_traces_with_loop": {
+          "type": "number"
+        },
+        "n_traces_with_repetition": {
+          "type": "number"
+        },
+        "average_affinity": {
+          "type": "number"
+        },
+        "deviation_from_random": {
+          "type": "number"
+        },
+        "lempel_ziv_complexity": {
+          "type": "number"
+        },
+        "number_of_successions": {
+          "type": "number"
+        },
+        "number_of_ties": {
+          "type": "number"
+        },
+        "structure": {
+          "type": "number"
+        },
+        "avg_node_degree_dfg": {
+          "type": "number"
+        },
+        "coeff_of_connectivity_dfg": {
+          "type": "number"
+        },
+        "cyclicity_dfg": {
+          "type": "number"
+        },
+        "cyclomatic_number_dfg": {
+          "type": "number"
+        },
+        "density_dfg": {
+          "type": "number"
+        },
+        "max_node_degree_dfg": {
+          "type": "number"
+        },
+        "n_cut_vertices_dfg": {
+          "type": "number"
+        },
+        "n_edges_dfg": {
+          "type": "number"
+        },
+        "n_nodes_dfg": {
+          "type": "number"
+        },
+        "separability_ratio_dfg": {
+          "type": "number"
+        },
+        "sequentiality_ratio_dfg": {
+          "type": "number"
+        },
+        "structure_dfg": {
+          "type": "number"
+        },
+        "accumulated_time_min": {
+          "type": "number"
+        },
+        "accumulated_time_max": {
+          "type": "number"
+        },
+        "accumulated_time_mean": {
+          "type": "number"
+        },
+        "accumulated_time_median": {
+          "type": "number"
+        },
+        "accumulated_time_mode": {
+          "type": "number"
+        },
+        "accumulated_time_std": {
+          "type": "number"
+        },
+        "accumulated_time_variance": {
+          "type": "number"
+        },
+        "accumulated_time_q1": {
+          "type": "number"
+        },
+        "accumulated_time_q3": {
+          "type": "number"
+        },
+        "accumulated_time_iqr": {
+          "type": "number"
+        },
+        "accumulated_time_geometric_mean": {
+          "type": "number"
+        },
+        "accumulated_time_geometric_std": {
+          "type": "number"
+        },
+        "accumulated_time_harmonic_mean": {
+          "type": "number"
+        },
+        "accumulated_time_skewness": {
+          "type": "number"
+        },
+        "accumulated_time_kurtosis": {
+          "type": "number"
+        },
+        "accumulated_time_coefficient_variation": {
+          "type": "number"
+        },
+        "accumulated_time_entropy": {
+          "type": "number"
+        },
+        "accumulated_time_skewness_hist": {
+          "type": "number"
+        },
+        "accumulated_time_kurtosis_hist": {
+          "type": "number"
+        },
+        "execution_time_min": {
+          "type": "number"
+        },
+        "execution_time_max": {
+          "type": "number"
+        },
+        "execution_time_mean": {
+          "type": "number"
+        },
+        "execution_time_median": {
+          "type": "number"
+        },
+        "execution_time_mode": {
+          "type": "number"
+        },
+        "execution_time_std": {
+          "type": "number"
+        },
+        "execution_time_variance": {
+          "type": "number"
+        },
+        "execution_time_q1": {
+          "type": "number"
+        },
+        "execution_time_q3": {
+          "type": "number"
+        },
+        "execution_time_iqr": {
+          "type": "number"
+        },
+        "execution_time_geometric_mean": {
+          "type": "number"
+        },
+        "execution_time_geometric_std": {
+          "type": "number"
+        },
+        "execution_time_harmonic_mean": {
+          "type": "number"
+        },
+        "execution_time_skewness": {
+          "type": "number"
+        },
+        "execution_time_kurtosis": {
+          "type": "number"
+        },
+        "execution_time_coefficient_variation": {
+          "type": "number"
+        },
+        "execution_time_entropy": {
+          "type": "number"
+        },
+        "execution_time_skewness_hist": {
+          "type": "number"
+        },
+        "execution_time_kurtosis_hist": {
+          "type": "number"
+        },
+        "remaining_time_min": {
+          "type": "number"
+        },
+        "remaining_time_max": {
+          "type": "number"
+        },
+        "remaining_time_mean": {
+          "type": "number"
+        },
+        "remaining_time_median": {
+          "type": "number"
+        },
+        "remaining_time_mode": {
+          "type": "number"
+        },
+        "remaining_time_std": {
+          "type": "number"
+        },
+        "remaining_time_variance": {
+          "type": "number"
+        },
+        "remaining_time_q1": {
+          "type": "number"
+        },
+        "remaining_time_q3": {
+          "type": "number"
+        },
+        "remaining_time_iqr": {
+          "type": "number"
+        },
+        "remaining_time_geometric_mean": {
+          "type": "number"
+        },
+        "remaining_time_geometric_std": {
+          "type": "number"
+        },
+        "remaining_time_harmonic_mean": {
+          "type": "number"
+        },
+        "remaining_time_skewness": {
+          "type": "number"
+        },
+        "remaining_time_kurtosis": {
+          "type": "number"
+        },
+        "remaining_time_coefficient_variation": {
+          "type": "number"
+        },
+        "remaining_time_entropy": {
+          "type": "number"
+        },
+        "remaining_time_skewness_hist": {
+          "type": "number"
+        },
+        "remaining_time_kurtosis_hist": {
+          "type": "number"
+        },
+        "within_day_min": {
+          "type": "number"
+        },
+        "within_day_max": {
+          "type": "number"
+        },
+        "within_day_mean": {
+          "type": "number"
+        },
+        "within_day_median": {
+          "type": "number"
+        },
+        "within_day_mode": {
+          "type": "number"
+        },
+        "within_day_std": {
+          "type": "number"
+        },
+        "within_day_variance": {
+          "type": "number"
+        },
+        "within_day_q1": {
+          "type": "number"
+        },
+        "within_day_q3": {
+          "type": "number"
+        },
+        "within_day_iqr": {
+          "type": "number"
+        },
+        "within_day_geometric_mean": {
+          "type": "number"
+        },
+        "within_day_geometric_std": {
+          "type": "number"
+        },
+        "within_day_harmonic_mean": {
+          "type": "number"
+        },
+        "within_day_skewness": {
+          "type": "number"
+        },
+        "within_day_kurtosis": {
+          "type": "number"
+        },
+        "within_day_coefficient_variation": {
+          "type": "number"
+        },
+        "within_day_entropy": {
+          "type": "number"
+        },
+        "within_day_skewness_hist": {
+          "type": "number"
+        },
+        "within_day_kurtosis_hist": {
+          "type": "number"
+        },
+        "similarity_rate_variants": {
+          "type": "number"
+        },
+        "advanced_trace_diversity": {
+          "type": "number"
+        },
+        "complexity_factor": {
+          "type": "number"
+        },
+        "average_edit_distance": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}
