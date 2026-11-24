@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="XESpresso logo: a smiling espresso cup with scatter dots in the crema and a process trace as steam">
+  <rect width="100" height="100" rx="22" fill="#5e81ac"/>
+  <!-- steam: a process trace with three activities -->
+  <path d="M45 34 Q55 31 55 23 Q55 14 47 11" fill="none" stroke="#d8dee9" stroke-width="2.6" stroke-linecap="round"/>
+  <circle cx="45" cy="34" r="3.5" fill="#d08770" stroke="#5e81ac" stroke-width="1.4"/>
+  <circle cx="55" cy="23" r="3.5" fill="#ebcb8b" stroke="#5e81ac" stroke-width="1.4"/>
+  <circle cx="47" cy="11" r="3.5" fill="#a3be8c" stroke="#5e81ac" stroke-width="1.4"/>
+  <!-- saucer -->
+  <ellipse cx="50" cy="83" rx="33" ry="6" fill="#3b4252" opacity="0.55"/>
+  <ellipse cx="50" cy="81.5" rx="20" ry="3" fill="#2e3440" opacity="0.35"/>
+  <!-- small loop handle -->
+  <path d="M70.5 51 C81 50 81 65 68.5 64" fill="none" stroke="#eceff4" stroke-width="4.5" stroke-linecap="round"/>
+  <!-- demitasse: straight, slightly tapered walls -->
+  <path d="M26 44 H74 L69.5 74 Q68.5 81 61.5 81 H38.5 Q31.5 81 30.5 74 Z" fill="#eceff4"/>
+  <!-- crema with the event data space -->
+  <ellipse cx="50" cy="44" rx="24" ry="5.5" fill="#a9714b" stroke="#eceff4" stroke-width="2.6"/>
+  <circle cx="37" cy="43.5" r="1.8" fill="#eceff4"/>
+  <circle cx="41" cy="45.6" r="1.8" fill="#eceff4"/>
+  <circle cx="49" cy="42.4" r="1.8" fill="#ebcb8b"/>
+  <circle cx="53" cy="45.2" r="1.8" fill="#ebcb8b"/>
+  <circle cx="60" cy="43.4" r="1.8" fill="#a3be8c"/>
+  <circle cx="64" cy="45.2" r="1.8" fill="#eceff4"/>
+  <!-- face -->
+  <circle cx="43" cy="59" r="2.2" fill="#2e3440"/>
+  <circle cx="57" cy="59" r="2.2" fill="#2e3440"/>
+  <circle cx="37.5" cy="64" r="2.8" fill="#bf616a" opacity="0.45"/>
+  <circle cx="62.5" cy="64" r="2.8" fill="#bf616a" opacity="0.45"/>
+  <path d="M46 64 Q50 68.5 54 64" fill="none" stroke="#2e3440" stroke-width="2.2" stroke-linecap="round"/>
+</svg>

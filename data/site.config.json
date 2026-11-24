@@ -1,0 +1,176 @@
+{
+  "site": {
+    "title": "XESpresso",
+    "subtitle": "Metadata Collector for Event Logs"
+  },
+
+  "navigation": [
+    { "label": "Event Data Catalog", "path": "/" },
+    { "label": "Event Data Space", "path": "/feature-space" },
+    { "label": "Feature Correlations", "path": "/feature-selection" },
+    { "label": "About", "path": "/about" }
+  ],
+
+  "visualization": {
+    "labels": {
+      "domainsTitle": "Domain Applications",
+      "domainsHint": "Choose a concept, then click a tile to filter event datasets. Tile widths follow the number of event datasets.",
+      "landscapeTitle": "Event Dataset Landscape",
+      "landscapeDescription": "Event datasets by academic context year, grouped and colored by the concept chosen above. Hover for details, click to open.",
+      "entrySingular": "event dataset",
+      "entryPlural": "event datasets"
+    }
+  },
+
+  "domainApplications": [
+    { "id": "Process Mining Benchmark", "label": "Process Mining Benchmark", "color": "#bf616a" },
+    { "id": "Administrative Process", "label": "Administrative Process", "color": "#88c0d0" },
+    { "id": "Public Administration", "label": "Public Administration", "color": "#ebcb8b" },
+    { "id": "Administrative Process for Healthcare", "label": "Administrative Process for Healthcare", "color": "#a3be8c" },
+    { "id": "IT Service Management", "label": "IT Service Management", "color": "#c3788f" },
+    { "id": "Healthcare", "label": "Healthcare", "color": "#b67a19" },
+    { "id": "Banking", "label": "Banking", "color": "#5bb3ad" },
+    { "id": "Financial", "label": "Financial", "color": "#cf624e" },
+    { "id": "Sales", "label": "Sales", "color": "#8c57b3" },
+    { "id": "Operational Process", "label": "Operational Process", "color": "#4aa47d" },
+    { "id": "Law", "label": "Law", "color": "#d08770" },
+    { "id": "Software", "label": "Software", "color": "#b48ead" },
+    { "id": "Manufacturing", "label": "Manufacturing", "color": "#6f8fd6" }
+  ],
+
+  "features": {
+    "search": true,
+    "filters": true,
+    "landscape": true,
+    "stats": true
+  },
+
+  "featureSet": "default",
+
+  "contribute": {
+    "email": "xespresso.maldonado@tum.de",
+    "requiredFields": ["name", "source", "description", "domainApplication", "eventLogType", "resourceType", "year"],
+    "fileSizeMB": { "warn": 100, "max": 300 },
+    "githubRepo": "andreamalhera/XESpresso-pages"
+  },
+
+  "about": {
+    "title": "About XESpresso",
+    "introduction": "XESpresso collects the characteristics of event logs without collecting the logs themselves. It runs in your browser, so your event data never leaves your computer: it computes the FEEED features of a log, records its metadata following Costa et al. and shows where it lies among the collected logs. You can then send the features and metadata to the collection. The collection combines seven data collections: BPIC (BPI Challenge logs), Synthetic Benchmark, 4TU Real-Life Logs, Community Repositories (GitHub and Kaggle), IoPT (IoT lab logs), OCEL Publication (object-centric event logs) and SuXXES. This version lists a sample in full. The other logs are still under review: they appear as faint points, and their FEEED features are used in all analyses, without names or sources.",
+    "sections": [
+      {
+        "title": "Event Data Catalog",
+        "summary": "Browse, search and filter all event datasets with their metadata, and see them in a landscape by publication year.",
+        "content": "Browse, search and filter all event datasets. Metadata follows the groups of Costa et al.: Basic Process Analytics, Domain Context, Academic Context, Data Characteristics, Resource Context and Path Observation. The landscape arranges logs by Academic Context Year (of the referencing paper, else of the dataset) and colors them by the chosen concept. Filters and search apply on every page."
+      },
+      {
+        "title": "Event Data Space",
+        "summary": "A map of the event datasets by their FEEED features: similar datasets lie close together.",
+        "content": "A 2D PCA of the FEEED features: each feature vector is mean-imputed, min-max scaled, L2-normalized and reduced to two components. Points are colored by Data Origin, with a hull per Data Collection; both can be set to any concept. Filtering recomputes the projection, so the axes change. Logs split from an OCEL per object type can be near-trivial and gather at one edge."
+      },
+      {
+        "title": "Feature Correlations",
+        "summary": "How the FEEED features correlate, and which repeat each other the least.",
+        "content": "A heatmap of pairwise correlations between FEEED features (over the logs that have both values), grouped into eight families. A greedy selector picks the N least mutually correlated features. Filtering recomputes both when at least five logs match."
+      },
+      {
+        "title": "Data Source",
+        "content": "One private table holds all event logs, one row each: source (DOI or dataset page), Data Collection, Dataset Source (the published dataset and its DOI), descriptive metadata (as coded by Costa et al. for their logs) and FEEED features. The public version shows a sample in full and hides the rest."
+      },
+      {
+        "title": "Adding and Sending Event Data",
+        "summary": "Add XES, XES YAML or CSV files. Features are computed in your browser, files are never uploaded, and you can send the entries to the collection.",
+        "invite": true,
+        "content": "Several XES files can be added separately or bundled into one log. XES YAML files (one per case, as written by CPEE, also zipped) give one log per process model. For CSV, choose the case ID, activity, timestamp and, optionally, resource columns. For an OCEL, choose one case ID column per object type to get one log per type. Logs made from one file are linked and count as one event data source. A DOI lookup fills in the year, citation, description and Dataset Source. Added logs stay in your browser. Before sending, a preview shows each entry. Send entries as a downloaded file by email or as a public GitHub issue. They contain only the computed values, your descriptions and, if given, your name and institution. The maintainers review every entry before publishing it under CC BY 4.0."
+      }
+    ],
+    "references": [
+      {
+        "text": "Costa, A., Eroglu, S. Y., Andree, K., & Pufahl, L. (2025). A Collection of Publicly Available Event Logs Enhanced by Metadata. In BPM 2025 Best Dissertation Award, Doctoral Consortium, and Demonstration & Resources Forum, CEUR Workshop Proceedings, vol. 4032, pp. 288–295.",
+        "url": "https://ceur-ws.org/Vol-4032/paper-38.pdf"
+      },
+      {
+        "text": "Maldonado, A., Tavares, G. M., Oyamada, R. S., Ceravolo, P., & Seidl, T. (2023). FEEED: Feature Extraction from Event Data. In ICPM 2023 Doctoral Consortium and Demo Track, CEUR Workshop Proceedings, vol. 3648.",
+        "url": "https://ceur-ws.org/Vol-3648/paper_6598.pdf"
+      },
+      {
+        "text": "Ehrendorfer, M., Bertrand, Y., Malburg, L., Mangler, J., Grüger, J., Rinderle-Ma, S., Bergmann, R., & Serral Asensio, E. (2023). Internet of Processes and Things: A Repository for IoT-Enriched Event Logs in Smart Environments. In BPM 2023 Best Dissertation Award, Doctoral Consortium, and Demonstration & Resources Forum, CEUR Workshop Proceedings, vol. 3469.",
+        "url": "https://ceur-ws.org/Vol-3469/paper-16.pdf"
+      },
+      {
+        "text": "IEEE Task Force on Process Mining. Process Mining Event Logs (BPI Challenge logs, published on 4TU.ResearchData).",
+        "url": "https://www.tf-pm.org/resources/logs"
+      },
+      {
+        "text": "Alessandro, B. (2026). State-Aware Object-Centric Process Mining: Two Synthetic OCEL 2.0 Evaluation Logs [Dataset]. Zenodo.",
+        "url": "https://doi.org/10.5281/zenodo.22140119"
+      },
+      {
+        "text": "Alessandro, B. (2026). Synthetic relational databases and reference OCELs [Dataset]. Zenodo.",
+        "url": "https://doi.org/10.5281/zenodo.22079246"
+      },
+      {
+        "text": "Berti, A. (2026). (Un)Fair Process Mining Event Logs (Converted to OCEL) [Dataset]. Zenodo.",
+        "url": "https://doi.org/10.5281/zenodo.21977698"
+      },
+      {
+        "text": "Berti, A. (2026). 2025 Abu Dhabi Grand Prix: Object-Centric Race, Tyre-Strategy and Race-Control Event Log (OCEL 2.0) [Dataset]. Zenodo.",
+        "url": "https://doi.org/10.5281/zenodo.23879622"
+      },
+      {
+        "text": "Berti, A. (2026). Boston Food Establishment Inspection Results and Findings in OCEL 2.0 [Dataset]. Zenodo.",
+        "url": "https://doi.org/10.5281/zenodo.23879897"
+      },
+      {
+        "text": "Berti, A. (2026). Object-Centric Event Log (OCEL) of the Enron Email Dataset [Dataset]. Zenodo.",
+        "url": "https://doi.org/10.5281/zenodo.21989732"
+      },
+      {
+        "text": "Berti, A. (2026). PMLRM-Bench: An Object-Centric Event Log of Large Reasoning Model Reasoning Steps for Process Mining Analysis [Dataset]. Zenodo.",
+        "url": "https://doi.org/10.5281/zenodo.21977680"
+      },
+      {
+        "text": "Berti, A. (2026). Simulated Inventory Management Database and Object-Centric Event Logs for Process Analysis [Dataset]. Zenodo.",
+        "url": "https://doi.org/10.5281/zenodo.21977737"
+      },
+      {
+        "text": "Berti, A. (2026). Simulated Object-Centric Event Logs (OCEL 2.0) for Order-to-Cash, Procure-to-Pay, Hiring, and Hospital Patient Lifecycle Processes [Dataset]. Zenodo.",
+        "url": "https://doi.org/10.5281/zenodo.21977764"
+      },
+      {
+        "text": "Diers, H., Peeva, V., Rennert, C., & van der Aalst, W. (2025). Object-Centric and Traditional Event Data of the German Bundestag [Dataset]. Zenodo.",
+        "url": "https://doi.org/10.5281/zenodo.16811928"
+      },
+      {
+        "text": "Heinisch, M., Graves, N., & van der Aalst, W. M. P. (2026). sOCEL 2.0: A Sustainability-Enriched OCEL of a Hinge Production Process [Dataset]. Zenodo.",
+        "url": "https://doi.org/10.5281/zenodo.24331838"
+      },
+      {
+        "text": "Knopp, B., & Graves, N. (2026). Container Logistics Object-centric Event Log [Dataset]. Zenodo.",
+        "url": "https://doi.org/10.5281/zenodo.8289899"
+      },
+      {
+        "text": "Knopp, B., & Wil M.P. van der Aalst. (2026). Order Management Object-centric Event Log in OCEL 2.0 Standard [Dataset]. Zenodo.",
+        "url": "https://doi.org/10.5281/zenodo.18376622"
+      },
+      {
+        "text": "Küsters, A., Pitsch, C., Rennert, C., & Peeva, V. (2026). Object-Centric Event Logs based on Publication Data [Dataset]. Zenodo.",
+        "url": "https://doi.org/10.5281/zenodo.23257441"
+      },
+      {
+        "text": "Park, G., & Leah Tacke, genannt U. (2026). Procure-To-Payment (P2P) Object-centric Event Log in OCEL 2.0 Standard (A. Berti, Ed.) [Dataset]. Zenodo.",
+        "url": "https://doi.org/10.5281/zenodo.24331871"
+      },
+      {
+        "text": "Wolf, N., Wittges, H., & Rinderle-Ma, S. (2025). SuXXES Event Logs: Synthetic and ERP-Based Process Data with Integrated Sustainability Data [Dataset]. Zenodo.",
+        "url": "https://doi.org/10.5281/zenodo.17756035"
+      }
+    ],
+    "license": {
+      "name": "CC BY 4.0",
+      "fullName": "Creative Commons Attribution 4.0 International",
+      "url": "https://creativecommons.org/licenses/by/4.0/",
+      "text": "This dataset and site content are licensed under a Creative Commons Attribution 4.0 International License. You are free to share and adapt the material for any purpose, even commercially, as long as you give appropriate credit, provide a link to the license, and indicate if changes were made."
+    }
+  }
+}
